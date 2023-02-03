@@ -1,12 +1,13 @@
 import React from "react";
 import {Text, View} from "react-native";
 
-const Favorite = () => {
+
+const Profile = () => {
     return (
         <View>
-            <Text>Favorite</Text>
+            <Text>Profile</Text>
         </View>
     )
 }
 
-export default React.memo(Favorite)
+export default Profile

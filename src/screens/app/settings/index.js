@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View} from "react-native";
 
+
 const Settings = () => {
     return (
         <View>
@@ -9,4 +10,4 @@ const Settings = () => {
     )
 }
 
-export default React.memo(Settings)
+export default Settings

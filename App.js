@@ -6,12 +6,58 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import SignUp from "./src/screens/auth/signUp";
 import SignIn from "./src/screens/auth/signIn";
+
 import {colors} from "./src/utils/color";
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Home from "./src/screens/app/home";
+import Favorites from "./src/screens/app/favorites";
+import Profile from "./src/screens/app/profile";
+import {Image} from "react-native";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const Tabs = () => {
+    return (
+        <Tab.Navigator
+            screenOptions={({route}) => ({
+                tabBarIcon: ({focused, color, size}) => {
+                    let iconName;
+                    if (route.name === 'Home') {
+                        iconName = focused
+                            ? require('./src/assets/images/tab/home_active.png')
+                            : require('./src/assets/images/tab/home.png');
+                    } else if (route.name === 'Profile') {
+                        iconName = focused
+                            ? require('./src/assets/images/tab/bookmark_active.png')
+                            : require('./src/assets/images/tab/bookmark.png');
+                    } else if (route.name === 'Favorites') {
+                        iconName = focused
+                            ? require('./src/assets/images/tab/profile_active.png')
+                            : require('./src/assets/images/tab/profile.png');
+                    }
+
+                    // You can return any component that you like here!
+                    return <Image style={{width: 24, height: 24}} source={iconName}/>;
+                },
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarStyle:{
+                    borderTopColor:colors.lightGray,
+                    backgroundColor:colors.white
+                }
+            })}
+        >
+            <Tab.Screen name={'Home'} component={Home}/>
+            <Tab.Screen name={'Favorites'} component={Favorites}/>
+            <Tab.Screen name={'Profile'} component={Profile}/>
+        </Tab.Navigator>
+    )
+}
 
 const App = () => {
+    const isSignedIn = true
     // useEffect(() => {
     //     GoogleSignin.configure({
     //         scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
@@ -30,9 +76,20 @@ const App = () => {
         <SafeAreaProvider>
             <NavigationContainer theme={theme}>
                 <Stack.Navigator>
-                    <Stack.Screen name="splash" component={Splash} options={{headerShown: false}}/>
-                    <Stack.Screen name="signUp" component={SignUp} options={{headerShown: false}}/>
-                    <Stack.Screen name="signIn" component={SignIn} options={{headerShown: false}}/>
+                    {isSignedIn ?
+                        (
+                            <>
+                                <Stack.Screen name={'Tabs'} component={Tabs} options={{headerShown: false}}/>
+                            </>
+                        ) : (
+                            <>
+                                <Stack.Screen name="splash" component={Splash} options={{headerShown: false}}/>
+                                <Stack.Screen name="signUp" component={SignUp} options={{headerShown: false}}/>
+                                <Stack.Screen name="signIn" component={SignIn} options={{headerShown: false}}/>
+                            </>
+                        )
+                    }
+
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>

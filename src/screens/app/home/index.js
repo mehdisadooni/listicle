@@ -1,6 +1,7 @@
 import React from "react";
 import {Text, View} from "react-native";
 
+
 const Home = () => {
     return (
         <View>
@@ -9,4 +10,4 @@ const Home = () => {
     )
 }
 
-export default React.memo(Home)
+export default Home
