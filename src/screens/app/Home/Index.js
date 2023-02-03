@@ -1,12 +1,12 @@
 import React from "react";
 import {Text, View} from "react-native";
 
-const Settings = () => {
+const Home = () => {
     return (
         <View>
-            <Text>Settings</Text>
+            <Text>Home</Text>
         </View>
     )
 }
 
-export default React.memo(Settings)
+export default React.memo(Home)
