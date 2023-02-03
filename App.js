@@ -4,10 +4,15 @@ import {
     StyleSheet,
 } from 'react-native';
 import Splash from "./src/screens/auth/splash";
-import Signup from "./src/screens/auth/signup";
-import Signin from "./src/screens/auth/signin";
-// import {GoogleSignin} from '@react-native-google-signin/google-signin';
+// import {GoogleSignin} from '@react-native-google-signIn/google-signIn';
 // import Config from "react-native-config";
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import SignUp from "./src/screens/auth/signUp";
+import SignIn from "./src/screens/auth/signIn";
+import {colors} from "./src/utils/color";
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
     // useEffect(() => {
@@ -19,15 +24,21 @@ const App = () => {
     //     });
     // }, [])
 
+    const theme = {
+        colors:{
+            background:colors.white
+        }
+    }
     return (
-        <SafeAreaView>
-            <Signin />
-            {/*<Signup/>*/}
-            {/*<Splash/>*/}
-        </SafeAreaView>
+        <NavigationContainer theme={theme}>
+            <Stack.Navigator>
+                <Stack.Screen name="Splash" component={Splash}/>
+                <Stack.Screen name="signIn" component={SignIn}/>
+                <Stack.Screen name="signUp" component={SignUp}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
-const styles = StyleSheet.create({});
 
 export default App;

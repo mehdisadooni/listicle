@@ -1,13 +1,14 @@
 import React from "react";
 import {ScrollView, Text} from "react-native";
-import {styles} from "./styles";
+
 import AuthHeader from "../../../components/AuthHeader";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
+import {styles} from "./styles";
 
-const Signin = () => {
+const SignIn = () => {
     return (
         <ScrollView style={styles.container}>
             <AuthHeader onBackPress={() => console.log('onBackPress')} title={'Sign In'}/>
@@ -27,4 +28,4 @@ const Signin = () => {
     )
 }
 
-export default Signin
+export default SignIn
