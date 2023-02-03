@@ -25,16 +25,16 @@ const App = () => {
     // }, [])
 
     const theme = {
-        colors:{
-            background:colors.white
+        colors: {
+            background: colors.white
         }
     }
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator>
-                <Stack.Screen name="Splash" component={Splash}/>
-                <Stack.Screen name="signIn" component={SignIn}/>
-                <Stack.Screen name="signUp" component={SignUp}/>
+                <Stack.Screen name="splash" component={Splash} options={{headerShown: false}}/>
+                <Stack.Screen name="signUp" component={SignUp} options={{headerShown: false}}/>
+                <Stack.Screen name="signIn" component={SignIn} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

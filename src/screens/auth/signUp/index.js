@@ -8,11 +8,11 @@ import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
 import {styles} from "./styles";
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     const [checked, setChecked] = useState(false);
     return (
         <ScrollView style={styles.container}>
-            <AuthHeader onBackPress={() => console.log('onBackPress')} title={'Sign Up'}/>
+            <AuthHeader onBackPress={() => navigation.goBack()} title={'Sign Up'}/>
             <Input label={'Name'} placeholder={'John Doe'}/>
             <Input label={'E-mail'} placeholder={'example@gmail.com'}/>
             <Input label={'Password'} placeholder={'**********'} isPassword/>
@@ -29,7 +29,7 @@ const SignUp = () => {
 
             <Text style={styles.footerText}>
                 Already have an account?
-                <Text style={styles.footerLink}>Sign In</Text>
+                <Text onPress={() => navigation.navigate('signIn')} style={styles.footerLink}>Sign In</Text>
             </Text>
         </ScrollView>
     )

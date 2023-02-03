@@ -8,10 +8,10 @@ import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
 import {styles} from "./styles";
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     return (
         <ScrollView style={styles.container}>
-            <AuthHeader onBackPress={() => console.log('onBackPress')} title={'Sign In'}/>
+            <AuthHeader onBackPress={() => navigation.goBack()} title={'Sign In'}/>
             <Input label={'E-mail'} placeholder={'example@gmail.com'}/>
             <Input label={'Password'} placeholder={'**********'} isPassword/>
             <Button title={'Sign In'} onPress={() => console.log('Sign In')} style={styles.button}/>
@@ -22,7 +22,7 @@ const SignIn = () => {
 
             <Text style={styles.footerText}>
                 Don’t have an account?
-                <Text style={styles.footerLink}>Sign Up</Text>
+                <Text onPress={()=>navigation.navigate('signUp')} style={styles.footerLink}>Sign Up</Text>
             </Text>
         </ScrollView>
     )
