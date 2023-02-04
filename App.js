@@ -30,12 +30,13 @@ const Tabs = () => {
                             : require('./src/assets/images/tab/home.png');
                     } else if (route.name === 'Profile') {
                         iconName = focused
-                            ? require('./src/assets/images/tab/bookmark_active.png')
-                            : require('./src/assets/images/tab/bookmark.png');
-                    } else if (route.name === 'Favorites') {
-                        iconName = focused
                             ? require('./src/assets/images/tab/profile_active.png')
                             : require('./src/assets/images/tab/profile.png');
+
+                    } else if (route.name === 'Favorites') {
+                        iconName = focused
+                            ? require('./src/assets/images/tab/bookmark_active.png')
+                            : require('./src/assets/images/tab/bookmark.png');
                     }
 
                     // You can return any component that you like here!
@@ -43,15 +44,15 @@ const Tabs = () => {
                 },
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarStyle:{
-                    borderTopColor:colors.lightGray,
-                    backgroundColor:colors.white
+                tabBarStyle: {
+                    borderTopColor: colors.lightGray,
+                    backgroundColor: colors.white
                 }
             })}
         >
             <Tab.Screen name={'Home'} component={Home}/>
-            <Tab.Screen name={'Favorites'} component={Favorites}/>
             <Tab.Screen name={'Profile'} component={Profile}/>
+            <Tab.Screen name={'Favorites'} component={Favorites}/>
         </Tab.Navigator>
     )
 }

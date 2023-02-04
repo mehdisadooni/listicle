@@ -1,13 +1,24 @@
 import React from "react";
-import {Text, View} from "react-native";
+import {FlatList, ScrollView, Text, View} from "react-native";
+import {SafeAreaView} from "react-native-safe-area-context";
+import {products} from "../../../data/products";
+import FavoriteItem from "../../../components/FavoriteItem";
+import Header from "../../../components/Header";
 
 
 const Favorites = () => {
+    const renderItemHandler = ({item, index}) => <FavoriteItem {...item} />
     return (
-        <View>
-            <Text>Favorites</Text>
-        </View>
+        <SafeAreaView>
+            <Header title={'Favorites'} />
+            <FlatList
+                data={products}
+                renderItem={renderItemHandler}
+                keyExtractor={(item) => String(item.id)}
+
+            />
+        </SafeAreaView>
     )
 }
 
-export default Favorites
+export default React.memo(Favorites)
