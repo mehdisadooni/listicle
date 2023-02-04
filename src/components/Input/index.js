@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {styles} from "./styles";
 import {colors} from "../../utils/color";
 
-const Input = ({label, placeholder, isPassword}) => {
+const Input = ({label, placeholder, value, isPassword, onChangeText}) => {
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -16,6 +16,8 @@ const Input = ({label, placeholder, isPassword}) => {
                     placeholder={placeholder}
                     placeholderTextColor={colors.gray}
                     secureTextEntry={isPassword && !isPasswordVisible}
+                    value={value}
+                    onChangeText={onChangeText}
                 />
                 {isPassword ? (
                     <Pressable onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
