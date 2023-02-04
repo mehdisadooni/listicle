@@ -1,6 +1,6 @@
 import React from "react";
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Image, Pressable, ScrollView, Text, View} from "react-native";
+import {Image, Linking, Pressable, ScrollView, Text, View} from "react-native";
 import {styles} from "./styles";
 import Button from "../../../components/Button";
 import ImageCarousel from "../../../components/ImageCarousel";
@@ -8,6 +8,11 @@ import ImageCarousel from "../../../components/ImageCarousel";
 
 const ProductDetails = ({navigation, route}) => {
     const {product} = route.params || {}
+    const onContactHandler = () => {
+        Linking.openURL('tel:+9891608864')
+        // Linking.openURL('mailto:mdi.mehdi97@gmail.com')
+    }
+
 
     return (
         <SafeAreaView style={styles.safe}>
@@ -30,7 +35,7 @@ const ProductDetails = ({navigation, route}) => {
                 <Pressable hitSlop={20} style={styles.bookmarkContainer}>
                     <Image style={styles.bookmarkIcon} source={require('../../../assets/images/tab/bookmark.png')}/>
                 </Pressable>
-                <Button title='Contact Seller'/>
+                <Button onPress={onContactHandler} title='Contact Seller'/>
             </View>
         </SafeAreaView>
     )
