@@ -5,7 +5,7 @@ import {styles} from "./styles";
 import Button from "../../../components/Button";
 
 
-const ProductDetails = ({route}) => {
+const ProductDetails = ({navigation, route}) => {
     const {product} = route.params || {}
 
     return (
@@ -16,14 +16,14 @@ const ProductDetails = ({route}) => {
                     <Text style={styles.title}>{product?.title}</Text>
                     <Text style={styles.price}>{product?.price}</Text>
                     <Text style={styles.description}>{product.description}</Text>
-                    <Text style={styles.description}>{product.description}</Text>
-                    <Text style={styles.description}>{product.description}</Text>
-                    <Text style={styles.description}>{product.description}</Text>
                 </View>
+                <Pressable onPress={() => navigation.goBack()} hitSlop={20} style={styles.backContainer}>
+                    <Image style={styles.backIcon} source={require('../../../assets/images/back.png')}/>
+                </Pressable>
             </ScrollView>
             <View style={styles.footer}>
                 <Pressable hitSlop={20} style={styles.bookmarkContainer}>
-                    <Image style={styles.bookmarkIcon} source={require('../../../assets/images/tab/bookmark.png')} />
+                    <Image style={styles.bookmarkIcon} source={require('../../../assets/images/tab/bookmark.png')}/>
                 </Pressable>
                 <Button title='Contact Seller'/>
             </View>

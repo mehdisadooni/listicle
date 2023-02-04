@@ -47,13 +47,13 @@ export const styles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         padding: 24,
-        alignItems:'center'
+        alignItems: 'center'
     },
     bookmarkContainer: {
         backgroundColor: colors.borderColor,
         borderRadius: 8,
-        padding:20,
-        marginRight:16
+        padding: 20,
+        marginRight: 16
         // width: 60,
         // height: 60,
         // alignItems: 'center',
@@ -63,5 +63,18 @@ export const styles = StyleSheet.create({
     bookmarkIcon: {
         width: 24,
         height: 24
+    },
+
+    backContainer: {
+        backgroundColor: colors.white,
+        padding: 10,
+        margin:24,
+        borderRadius: 8,
+        marginRight: 16,
+        position: 'absolute'
+    },
+    backIcon: {
+        width: 20,
+        height: 20,
     }
 })
