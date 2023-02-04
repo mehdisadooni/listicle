@@ -6,8 +6,18 @@ import FavoriteItem from "../../../components/FavoriteItem";
 import Header from "../../../components/Header";
 
 
-const Favorites = () => {
-    const renderItemHandler = ({item, index}) => <FavoriteItem {...item} />
+const Favorites = ({navigation}) => {
+    const renderItemHandler = ({item, index}) => {
+        const onProductPress = (product) => {
+            navigation.navigate('ProductDetails', {product})
+        }
+        return (
+            <FavoriteItem
+                {...item}
+                onPress={() => onProductPress(item)}
+            />
+        )
+    }
     return (
         <SafeAreaView>
             <Header title={'Favorites'} />
