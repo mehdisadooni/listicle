@@ -8,12 +8,11 @@ import CategoryBox from "../../../components/CategoryBox";
 import {products} from "../../../data/products";
 import ProductHomeItem from "../../../components/ProductHomeItem";
 
-const Home = () => {
+const Home = ({navigation}) => {
 
     const [selectedCategory, setSelectedCategory] = useState();
     const [filterProduct, setFilterProduct] = useState(products);
     const [keyword, setKeyword] = useState();
-    console.log(keyword)
 
     useEffect(() => {
         if (selectedCategory && !keyword) {
@@ -37,7 +36,17 @@ const Home = () => {
         isSelected={item?.id === selectedCategory}
         isFirst={index === 0}/>
 
-    const renderProductItem = ({item, index}) => <ProductHomeItem {...item} />
+    const renderProductItem = ({item, index}) => {
+        const onProductPress = (product) => {
+            navigation.navigate('ProductDetails', {product})
+        }
+        return (
+            <ProductHomeItem
+                {...item}
+                onPress={() => onProductPress(item)}
+            />
+        )
+    }
 
     return (
         <SafeAreaView>
@@ -53,12 +62,13 @@ const Home = () => {
                 keyExtractor={(item, index) => String(index)}
             />
 
-            <FlatList data={filterProduct}
-                      renderItem={renderProductItem}
-                      keyExtractor={(item, index) => String(index)}
-                      numColumns={2}
-                      style={styles.productList}
-                      ListFooterComponent={<View style={{height: 200}}></View>}
+            <FlatList
+                data={filterProduct}
+                renderItem={renderProductItem}
+                keyExtractor={(item, index) => String(index)}
+                numColumns={2}
+                style={styles.productList}
+                ListFooterComponent={<View style={{height: 200}}></View>}
             />
 
         </SafeAreaView>

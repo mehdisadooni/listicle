@@ -14,6 +14,7 @@ import Home from "./src/screens/app/home";
 import Favorites from "./src/screens/app/favorites";
 import Profile from "./src/screens/app/profile";
 import {Image} from "react-native";
+import ProductDetails from "./src/screens/app/productDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -81,6 +82,7 @@ const App = () => {
                         (
                             <>
                                 <Stack.Screen name={'Tabs'} component={Tabs} options={{headerShown: false}}/>
+                                <Stack.Screen name={'ProductDetails'} component={ProductDetails} options={{headerShown: false}}/>
                             </>
                         ) : (
                             <>

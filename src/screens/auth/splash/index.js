@@ -21,6 +21,7 @@ const Splash = ({navigation}) => {
                     </View>
 
                     <Button
+                        style={styles.button}
                         title={'Sign Up'}
                         onPress={() => navigation.navigate('signUp')}
                     />

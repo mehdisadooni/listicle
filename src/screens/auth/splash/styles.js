@@ -32,5 +32,8 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginTop: 30
+    },
+    button:{
+        width:'100%'
     }
 })
