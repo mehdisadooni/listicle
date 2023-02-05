@@ -18,8 +18,13 @@ const ImageCarousel = ({images}) => {
     }
     return (
         <View>
-            <FlatList horizontal onMomentumScrollEnd={ScrollEnd} pagingEnabled style={styles.list} data={images}
-                      renderItem={renderImages}/>
+            <FlatList
+                horizontal
+                onMomentumScrollEnd={ScrollEnd}
+                pagingEnabled style={styles.list}
+                data={images}
+                renderItem={renderImages}
+            />
             <View style={styles.pagination}>
                 {images?.map((image, index) => {
                     return (
