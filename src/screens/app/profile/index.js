@@ -6,7 +6,7 @@ import Header from "../../../components/Header";
 import ListItem from "../../../components/ListItem";
 import Button from "../../../components/Button";
 
-const Profile = () => {
+const Profile = ({navigation}) => {
     const num = 10;
     return (
         <SafeAreaView style={{flex: 1}}>
@@ -16,10 +16,18 @@ const Profile = () => {
                     <Text style={styles.name}>Elina Hovakimyan</Text>
                     <Text style={styles.email}>hello@gmail.com</Text>
 
-                    <ListItem title={'My Listings'} subtitle={`Already have ${num} listing`}/>
-                    <ListItem title={'Settings'} subtitle={'Account, FAQ, Contact'}/>
+                    <ListItem title={'My Listings'}
+                              subtitle={`Already have ${num} listing`}
+                    />
+                    <ListItem onPress={() => navigation.navigate('Settings')}
+                              title={'Settings'}
+                              subtitle={'Account, FAQ, Contact'}
+                    />
                 </View>
-                <Button style={{flex:0}} title={'Add a new listing'}/>
+                <Button
+                    style={{flex: 0}}
+                    onPress={() => navigation.navigate('CreateListing')}
+                    title={'Add a new listing'}/>
             </View>
         </SafeAreaView>
     )

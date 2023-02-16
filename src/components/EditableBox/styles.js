@@ -3,10 +3,8 @@ import {colors} from "../../utils/color";
 
 export const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 16,
+        paddingHorizontal: 16,
+        paddingVertical: 8,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -20,19 +18,15 @@ export const styles = StyleSheet.create({
         marginVertical: 12,
         borderRadius: 4
     },
-    title: {
-        color: colors.blue,
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    subtitle: {
-        marginTop:6,
+    label: {
+        marginBottom: 6,
         color: colors.gray,
         fontSize: 12,
 
     },
-    arrowIcon: {
-        width: 32,
-        height: 32,
+    input: {
+        color: colors.blue,
+        fontSize: 14,
+        fontWeight: '500',
     },
 })

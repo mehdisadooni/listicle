@@ -26,6 +26,9 @@ const ProductDetails = ({navigation, route}) => {
                     <Text style={styles.title}>{product?.title}</Text>
                     <Text style={styles.price}>{product?.price}</Text>
                     <Text style={styles.description}>{product.description}</Text>
+                    <Text style={styles.description}>{product.description}</Text>
+                    <Text style={styles.description}>{product.description}</Text>
+                    <Text style={styles.description}>{product.description}</Text>
                 </View>
                 <Pressable onPress={() => navigation.goBack()} hitSlop={20} style={styles.backContainer}>
                     <Image style={styles.backIcon} source={require('../../../assets/images/back.png')}/>
