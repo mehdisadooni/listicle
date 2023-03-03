@@ -17,6 +17,7 @@ import Settings from "./src/screens/app/settings";
 import {Image} from "react-native";
 import ProductDetails from "./src/screens/app/productDetails";
 import CreateListing from "./src/screens/app/createListing";
+import MyListing from "./src/screens/app/myListing";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,6 +28,7 @@ const ProfileStack = () => {
             <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
             <Stack.Screen name="Settings" component={Settings} options={{headerShown: false}}/>
             <Stack.Screen name="CreateListing" component={CreateListing} options={{headerShown: false}}/>
+            <Stack.Screen name="MyListing" component={MyListing} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

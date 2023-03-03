@@ -16,7 +16,7 @@ const Profile = ({navigation}) => {
                     <Text style={styles.name}>Elina Hovakimyan</Text>
                     <Text style={styles.email}>hello@gmail.com</Text>
 
-                    <ListItem title={'My Listings'}
+                    <ListItem onPress={() => navigation.navigate('MyListing')} title={'My Listings'}
                               subtitle={`Already have ${num} listing`}
                     />
                     <ListItem onPress={() => navigation.navigate('Settings')}
