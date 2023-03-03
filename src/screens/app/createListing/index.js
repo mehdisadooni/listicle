@@ -14,6 +14,8 @@ import {styles} from "./styles";
 import Header from "../../../components/Header";
 import {launchImageLibrary} from 'react-native-image-picker';
 import Input from "../../../components/Input";
+import {categories} from "../../../data/categories";
+import Button from "../../../components/Button";
 
 const CreateListing = ({navigation}) => {
 
@@ -35,66 +37,77 @@ const CreateListing = ({navigation}) => {
     const onchange = (value, key) => {
         setValues((val) => ({...val, [key]: value}))
     }
-        return (
-            <SafeAreaView style={{flex: 1}}>
-                <Header showBack
-                        onBackPress={() => navigation.goBack()}
-                        title="Create a new listing"
-                />
+    return (
+        <SafeAreaView style={{flex: 1}}>
+            <Header showBack
+                    onBackPress={() => navigation.goBack()}
+                    title="Create a new listing"
+            />
+            <ScrollView style={styles.container}>
                 <KeyboardAvoidingView behavior='position'>
-                    <ScrollView style={styles.container}>
-                        <Text style={styles.sectionTitle}>Upload photos</Text>
-                        <View style={styles.imageRow}>
-                            <TouchableOpacity disabled={loading} style={styles.uploadContainer} onPress={uploadNewImage}>
-                                <View style={styles.uploadCircle}>
-                                    <Text style={styles.uploadPlus}>+</Text>
+
+                    <Text style={styles.sectionTitle}>Upload photos</Text>
+                    <View style={styles.imageRow}>
+                        <TouchableOpacity disabled={loading} style={styles.uploadContainer} onPress={uploadNewImage}>
+                            <View style={styles.uploadCircle}>
+                                <Text style={styles.uploadPlus}>+</Text>
+                            </View>
+                        </TouchableOpacity>
+                        {images?.map(image => {
+                            return (
+                                <View style={styles.imageContainer} key={image?.fileName}>
+                                    <Image style={styles.image} source={{uri: image?.uri}}/>
+                                    <Pressable hitSlop={20} onPress={() => onDeleteImage(image)}>
+                                        <Image style={styles.delete}
+                                               source={require('../../../assets/images/close.png')}/>
+                                    </Pressable>
                                 </View>
-                            </TouchableOpacity>
-                            {images?.map(image => {
-                                return (
-                                    <View style={styles.imageContainer} key={image?.fileName}>
-                                        <Image style={styles.image} source={{uri: image?.uri}}/>
-                                        <Pressable hitSlop={20} onPress={() => onDeleteImage(image)}>
-                                            <Image style={styles.delete}
-                                                   source={require('../../../assets/images/close.png')}/>
-                                        </Pressable>
-                                    </View>
-                                )
-                            })}
+                            )
+                        })}
 
-                            {loading ? (
-                                <ActivityIndicator/>
-                            ) : null}
-                        </View>
+                        {loading ? (
+                            <ActivityIndicator/>
+                        ) : null}
+                    </View>
 
-                        <Input
-                            placeholder='Listing Title'
-                            label='Title'
-                            value={values.title}
-                            onChangeText={(v) => onchange(v, 'title')}
-                        />
+                    <Input
+                        placeholder='Listing Title'
+                        label='Title'
+                        value={values.title}
+                        onChangeText={(v) => onchange(v, 'title')}
+                    />
 
-                        <Input
-                            placeholder='Enter price in USD'
-                            label='Price'
-                            value={values.title}
-                            onChangeText={(v) => onchange(v, 'Price')}
-                            keyboardType='numeric'
-                        />
+                    <Input
+                        type="picker"
+                        placeholder='Select the category'
+                        label='Category'
+                        value={values.category}
+                        onChangeText={(v) => onchange(v, 'Category')}
+                        options={categories}
+                    />
 
-                        <Input
-                            placeholder='Tell us more...'
-                            label='Description'
-                            value={values.description}
-                            onChangeText={(v) => onchange(v, 'description')}
-                            multiline
-                            style={styles.textarea}
-                        />
+                    <Input
+                        placeholder='Enter price in USD'
+                        label='Price'
+                        value={values.price}
+                        onChangeText={(v) => onchange(v, 'Price')}
+                        keyboardType='numeric'
+                    />
 
-                    </ScrollView>
+                    <Input
+                        placeholder='Tell us more...'
+                        label='Description'
+                        value={values.description}
+                        onChangeText={(v) => onchange(v, 'description')}
+                        multiline
+                        style={styles.textarea}
+                    />
+
+                    <Button title='Submit' style={styles.button}/>
                 </KeyboardAvoidingView>
-            </SafeAreaView>
-        )
-    }
+            </ScrollView>
+        </SafeAreaView>
+    )
+}
 
-    export default React.memo(CreateListing)
+export default React.memo(CreateListing)

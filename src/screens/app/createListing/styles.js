@@ -62,5 +62,7 @@ export const styles = StyleSheet.create({
     textarea: {
         minHeight: 150,
     },
-
+    button: {
+        marginBottom: 160
+    }
 })
